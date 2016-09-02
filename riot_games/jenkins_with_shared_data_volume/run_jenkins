@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker stop riot_jenkins_master riot_jenkins_data &>/dev/null
+docker rm   riot_jenkins_master riot_jenkins_data &>/dev/null
+
+docker run --name=riot_jenkins_data riot_jenkins_data
+docker run -p 8080:8080 -p 50000:50000 --name=riot_jenkins_master --volumes-from=riot_jenkins_data -d riot_jenkins_master
+

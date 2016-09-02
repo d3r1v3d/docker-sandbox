@@ -1,0 +1,15 @@
+riot_jenkins_data:
+  build: jenkins_data
+riot_jenkins_master:
+  build: jenkins_master
+  volumes_from:
+    - riot_jenkins_data
+  ports:
+    - "50000:50000"
+riot_jenkins_nginx:
+  build: jenkins_nginx
+  ports:
+    - "80:80"
+  links:
+    - riot_jenkins_master:jenkins_master
+

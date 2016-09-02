@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Removing any existing riot_jenkins-* images..."
+docker rmi riot_jenkins_master riot_jenkins_data &>/dev/null
+
+echo "Building riot_jenkins-* images..."
+docker build -t riot_jenkins_master jenkins_master/
+docker build -t riot_jenkins_data   jenkins_data/
+
